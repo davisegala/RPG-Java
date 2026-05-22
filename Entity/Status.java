@@ -1,18 +1,32 @@
 package Entity;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Status {
-    private int strength = 1;
-    private int sourcery = 1;
-    private int resistance = 1;
-    private int agility = 1;
+    public enum StatType {
+        STRENGHT,
+        SOURCERY,
+        RESISTANCE,
+        AGILITY
+    }
+    
+    private Map<StatType, Integer> stats = new HashMap<>();
     private int hp = getMaxHp();
+    
+    public Status() {
+        for (StatType stat : StatType.values()) {
+            stats.put(stat, 1);
+        }
+    }
+
     
     public void print(){
         System.out.println("====== Status ======");
-        System.out.println("strength: "+strength);
-        System.out.println("sourcery: "+sourcery);
-        System.out.println("resistance: "+resistance);
-        System.out.println("agility: "+agility);        
+        System.out.println("Strength: " + getStat(StatType.STRENGHT));
+        System.out.println("Sourcery: " + getStat(StatType.SOURCERY));
+        System.out.println("Resistance: " + getStat(StatType.RESISTANCE));
+        System.out.println("Agility: " + getStat(StatType.AGILITY));
     }
     
     private boolean canSet(int stat){
@@ -24,7 +38,19 @@ public class Status {
     }
     
     public int getMaxHp(){
-        return this.resistance * 30;
+        return getStat(StatType.RESISTANCE) * 30;
+    }
+    
+    
+    // Getters and Setters
+    
+    
+    public void setStat(StatType type, int value) {
+        if (canSet(value)) stats.put(type, value);
+    }
+
+    public int getStat(StatType type) {
+        return stats.getOrDefault(type, 0);
     }
     
     public int getHp() {

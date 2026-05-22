@@ -1,5 +1,6 @@
 package Entity;
 
+import Entity.Status.StatType;
 import Itens.TypeItens.Armor;
 import Itens.Item;
 import Itens.TypeItens.Weapon;
@@ -8,22 +9,22 @@ import java.util.Map;
 
 public class Entity {
     private String name;
-    protected Status status;
+    private Status status;
     private Skill[] skills;
     private boolean isPlayer = false;
     private int xp;
     protected int level;
     protected Class classe;
-    private Inventory inventory = new Inventory();
+    private Inventory inventory;
     private Weapon weapon;
     
     public enum ArmorSlot{HELMET, CHESTPLATE, LEGGINGS, BOOTS}
     private Map<ArmorSlot, Armor> armors = new HashMap<>();
-    
-    private Map<StatType, Integer> stats;
 
     public Entity(String name){
         this.name = name;
+        this.status = new Status();
+        this.inventory = new Inventory();
     }
     
     public int getArmorClass() {
@@ -64,11 +65,11 @@ public class Entity {
     }
     
     public void setStat(StatType type, int value) {
-        stats.put(type, value);
+        status.setStat(type, value);
     }
 
     public int getStat(StatType type) {
-        return stats.getOrDefault(type, 0);
+        return status.getStat(type);
     }
 
     public Skill[] getSkills() {

@@ -2,7 +2,7 @@ package UtilMethods;
 
 import Entity.Skill;
 import Entity.Entity;
-import Entity.StatType;
+import Entity.Status.StatType;
 import java.util.Random;
 import java.util.Scanner;
 

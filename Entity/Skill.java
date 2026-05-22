@@ -1,5 +1,7 @@
 package Entity;
 
+import Entity.Status.StatType;
+
 public class Skill {
     private String name;
     private int baseDamage;

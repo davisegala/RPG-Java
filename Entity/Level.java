@@ -1,5 +1,7 @@
 package Entity;
 
+import Entity.Status.StatType;
+
 public class Level {
     public static void setLevel(int quantity, Entity entity){
         if (quantity < 1) return;
@@ -55,7 +57,7 @@ public class Level {
             entity.setStat(StatType.AGILITY, (entity.getStat(StatType.AGILITY) + 1 * quantity));
             
         }
-        entity.setHp(entity.status.getMaxHp());
+        entity.setHp(entity.getMaxHp());
     }
     
     private static int getNecessaryXp(Entity entity){
