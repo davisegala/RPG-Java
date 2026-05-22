@@ -140,7 +140,7 @@ public class Entity {
     }
 
     public int getResistance() {
-        return this.status.getSourcery();
+        return this.status.getResistance();
     }
 
     public int getAgility() {
