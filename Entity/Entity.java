@@ -21,6 +21,14 @@ public class Entity {
         this.level = new Level();
         this.slots = new Slots();
     }
+
+    public void addItem(Item item) {
+        this.inventory.addItem(item);
+    }
+
+    public void addItem(Item item, int amont) {
+        this.inventory.addItem(item, amont);
+    }
     
     public int getArmorClass() {
         return slots.getArmorClass();
@@ -28,18 +36,6 @@ public class Entity {
     
     public void equipArmor(Armor armor) {
         slots.equipArmor(armor);
-    }
-    
-    public void addItem(Item item){
-        this.inventory.addItem(item);
-    }
-    
-    public void addItem(Item item, int quantity){
-        this.inventory.addItem(item, quantity);
-    }
-    
-    public void useItem(Item item, Entity target){
-        this.inventory.useItem(item, target);
     }
 
     public String getName() {
@@ -79,14 +75,6 @@ public class Entity {
         this.classe = classe;
     }
 
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
-
     public int getHp() {
         return status.getHp();
     }
@@ -121,5 +109,9 @@ public class Entity {
     
     public int getLevel() {
         return this.level.getLevel();
+    }
+
+    public Inventory getInventory() {
+        return this.inventory;
     }
 }

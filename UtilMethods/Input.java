@@ -28,13 +28,13 @@ public class Input {
         }
     }
     
-    public int inputChoise(int range){
+    public int inputChoose(int range){
         while (true){
             int num = this.inputInt();
             if (choiseInRange(num, range)) {
                 return num;
             } else {
-                System.out.println("Invalid choise");
+                System.out.println("Invalid choose");
             }
         }
     }

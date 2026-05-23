@@ -4,7 +4,8 @@ import Entity.Entity;
 
 public abstract class Item {
     private String name;
-    public Type type;
+    private Type type;
+    private int price = 100;
     
     public enum Type{
         EQUIPMENT,
@@ -15,6 +16,12 @@ public abstract class Item {
     public Item(String name, Type type) {
         this.name = name;
         this.type = type;
+    }
+
+    public Item(String name, Type type, int price) {
+        this.name = name;
+        this.type = type;
+        this.price = price;
     }
     
     public abstract String display();
@@ -36,14 +43,22 @@ public abstract class Item {
     }
     
     public void getItemType(){
-        
+
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public boolean getIsEquipment() {
-        return this.type == type.EQUIPMENT;
+        return this.type == this.type.EQUIPMENT;
     }
     
     public boolean getIsMaterial(){
-        return this.type == type.MATERIAL;
+        return this.type == this.type.MATERIAL;
     }
 }

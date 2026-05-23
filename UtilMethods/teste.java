@@ -8,6 +8,7 @@ import Entity.Slots.ArmorSlot;
 import Entity.StatType;
 import Itens.Material.Iron;
 import Itens.TypeItens.Potion;
+import NPC.Merchant;
 
 public class teste {
     public static void main(String[] args) {
@@ -48,8 +49,13 @@ public class teste {
         player.addItem(plateArmor);
 
         player.addItem(new Iron());
+
+        Merchant airon = new Merchant("Airon");
+        airon.addItem(new Iron(), 67);
         
         // Others
-        com.battle(player, wolf);
+        airon.openStore(player);
+
+        //com.battle(player, wolf);
     }
 }
