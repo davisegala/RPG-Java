@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4ef4d04-f011-4ced-a94c-19365d093884" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/NPC/Npc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Itens/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/Itens/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NPC/Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/NPC/Merchant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UtilMethods/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/UtilMethods/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UtilMethods/teste.java" beforeDir="false" afterPath="$PROJECT_DIR$/UtilMethods/teste.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -32,6 +46,65 @@
     &quot;accountId&quot;: &quot;d331f321-136d-4de2-895d-3cc204ed8dc2&quot;
   }
 }</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="3.4471994158783146E-8" />
+      <entry key="MS500" value="0.03217312760731241" />
+      <entry key="S2" value="0.4235195978934102" />
+      <entry key="S5" value="0.7126772671511623" />
+      <entry key="S10" value="0.9445718325056616" />
+      <entry key="S30" value="2.6230443871247875" />
+      <entry key="S60" value="6.6788455081458755" />
+      <entry key="M2" value="15.64600936563735" />
+      <entry key="M5" value="32.84540357163044" />
+      <entry key="M10" value="45.49445682427275" />
+      <entry key="M15" value="54.138779684931166" />
+      <entry key="M30" value="75.77368895061402" />
+      <entry key="H1" value="102.40702033614353" />
+      <entry key="H2" value="124.9535744035049" />
+      <entry key="H4" value="139.8752590002824" />
+      <entry key="D1" value="154.7267373733425" />
+      <entry key="W1" value="157.52577235445958" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.000000007697302" />
+      <entry key="S5" value="1.0005682720131213" />
+      <entry key="S10" value="1.0240699657623122" />
+      <entry key="S30" value="1.386715516694704" />
+      <entry key="S60" value="2.032323203300895" />
+      <entry key="M2" value="3.0015716785023394" />
+      <entry key="M5" value="4.33734778611871" />
+      <entry key="M10" value="5.246592847717636" />
+      <entry key="M15" value="6.059369790444151" />
+      <entry key="M30" value="8.410155327662892" />
+      <entry key="H1" value="11.295567942492378" />
+      <entry key="H2" value="13.65648010384744" />
+      <entry key="H4" value="15.181757418692237" />
+      <entry key="D1" value="16.674216019640543" />
+      <entry key="W1" value="16.952868106099878" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="3.293565382554805E-5" />
+      <entry key="MS500" value="0.13864794305800973" />
+      <entry key="S2" value="0.9259525137779288" />
+      <entry key="S5" value="1.458240205398691" />
+      <entry key="S10" value="1.8221901392474305" />
+      <entry key="S30" value="3.925076615917148" />
+      <entry key="S60" value="8.629446314421127" />
+      <entry key="M2" value="18.560073624615033" />
+      <entry key="M5" value="37.109625728032924" />
+      <entry key="M10" value="50.6895895166772" />
+      <entry key="M15" value="60.15628819074143" />
+      <entry key="M30" value="84.15294833078961" />
+      <entry key="H1" value="113.68099740345544" />
+      <entry key="H2" value="138.59668040144123" />
+      <entry key="H4" value="155.0494807601947" />
+      <entry key="D1" value="171.39955720057944" />
+      <entry key="W1" value="174.4784372358663" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3,
   &quot;fromUser&quot;: false
@@ -50,6 +123,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "Code-redesing",
+    "javascript.preferred.runtime.type.id": "node",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Davi/IdeaProjects/RPG-Java/.idea",
     "node.js.detected.package.eslint": "true",
@@ -57,6 +131,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.file-colors",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -68,19 +143,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Davi\IdeaProjects\RPG-Java" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="RPG-Java" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="RPG-Java" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -105,5 +167,20 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
