@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4ef4d04-f011-4ced-a94c-19365d093884" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Entity/Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/Slots.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Entity/StatType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NPC/Merchant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/EntityClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Skill.java" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Skill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/Entity/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity/TypeStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Itens/Craft.java" beforeDir="false" afterPath="$PROJECT_DIR$/Itens/Craft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Itens/Material/Iron.java" beforeDir="false" afterPath="$PROJECT_DIR$/Itens/Material/Iron.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Itens/Material/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/Itens/Material/Material.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Itens/TypeItens/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Itens/TypeItens/Armor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Itens/TypeItens/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Itens/TypeItens/Potion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Itens/TypeItens/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/Itens/TypeItens/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UtilMethods/Combat.java" beforeDir="false" afterPath="$PROJECT_DIR$/UtilMethods/Combat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UtilMethods/teste.java" beforeDir="false" afterPath="$PROJECT_DIR$/UtilMethods/teste.java" afterDir="false" />
-    </list>
+    <list default="true" id="a4ef4d04-f011-4ced-a94c-19365d093884" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -59,7 +47,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Code-redesing",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Davi/IdeaProjects/RPG-Java",
     "node.js.detected.package.eslint": "true",
@@ -94,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1779508043429</updated>
       <workItem from="1779508044734" duration="13000" />
-      <workItem from="1779508111892" duration="316000" />
+      <workItem from="1779508111892" duration="637000" />
     </task>
     <servers />
   </component>
