@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4ef4d04-f011-4ced-a94c-19365d093884" name="Changes" comment="" />
+    <list default="true" id="a4ef4d04-f011-4ced-a94c-19365d093884" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,7 +51,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "Code-redesing",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Davi/IdeaProjects/RPG-Java",
+    "last_opened_file_path": "C:/Users/Davi/IdeaProjects/RPG-Java/.idea",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,11 +62,25 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Davi\IdeaProjects\RPG-Java\.idea" />
       <recent name="C:\Users\Davi\IdeaProjects\RPG-Java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Davi\IdeaProjects\RPG-Java" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="RPG-Java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="RPG-Java" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -82,7 +98,8 @@
       <option name="presentableId" value="Default" />
       <updated>1779508043429</updated>
       <workItem from="1779508044734" duration="13000" />
-      <workItem from="1779508111892" duration="637000" />
+      <workItem from="1779508111892" duration="751000" />
+      <workItem from="1779508882795" duration="29000" />
     </task>
     <servers />
   </component>
