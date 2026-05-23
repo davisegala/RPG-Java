@@ -3,8 +3,6 @@ package Entity;
 import Itens.TypeItens.Armor;
 import Itens.Item;
 import Itens.TypeItens.Weapon;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Entity {
     private String name;
@@ -14,29 +12,22 @@ public class Entity {
     private boolean isPlayer = false;
     protected Class classe;
     private Inventory inventory;
-    private Weapon weapon;
-    
-    public enum ArmorSlot{HELMET, CHESTPLATE, LEGGINGS, BOOTS}
-    private Map<ArmorSlot, Armor> armors = new HashMap<>();
+    private Slots slots;
 
     public Entity(String name){
         this.name = name;
         this.status = new Status();
         this.inventory = new Inventory();
         this.level = new Level();
+        this.slots = new Slots();
     }
     
     public int getArmorClass() {
-        int armorClass = 0;
-        for (Armor armor : armors.values()) {
-            if (armor == null) continue;
-            armorClass += armor.getArmor();
-        }
-        return armorClass;
+        return slots.getArmorClass();
     }
     
     public void equipArmor(Armor armor) {
-        armors.put(armor.getSlot(), armor);
+        slots.equipArmor(armor);
     }
     
     public void addItem(Item item){
@@ -109,11 +100,11 @@ public class Entity {
     }
 
     public Weapon getWeapon() {
-        return weapon;
+        return slots.getWeapon();
     }
 
     public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
+        this.slots.setWeapon(weapon);
     }
     
     public int getXp() {

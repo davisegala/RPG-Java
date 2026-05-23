@@ -7,7 +7,7 @@ public class Weapon extends Item{
     private int damage;
     
     public Weapon(String name, int damage) {
-        super(name, Item.Type.EQUIPMENT);
+        super(name, Type.EQUIPMENT);
         if (damage >= 1) {
             this.damage = damage;
         } else {

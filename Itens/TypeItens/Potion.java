@@ -7,7 +7,7 @@ public class Potion extends Item {
     private final int healAmount;
     
     public Potion(String name, int healAmount) {
-        super(name, Item.Type.CONSUMABLE);
+        super(name, Type.CONSUMABLE);
         this.healAmount = healAmount;
     }
 

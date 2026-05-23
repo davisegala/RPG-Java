@@ -1,16 +1,11 @@
 package Itens.TypeItens;
 
-import Entity.Entity.ArmorSlot;
+import Entity.Slots.ArmorSlot;
 import Itens.Item;
 
 public class Armor extends Item{
     private int armor;
-    private ArmorType armorType;
     private ArmorSlot slot;
-    
-    public enum ArmorType {
-        HELMET, CHESTPLATE, LEGGINGS, BOOTS
-    }
     
     public Armor(String name, int armor, ArmorSlot armorSlot) {
         super(name, Type.EQUIPMENT);
@@ -24,7 +19,7 @@ public class Armor extends Item{
     
     @Override
     public String display() {
-        return "Armor class: " + this.armor + " | Armor type: " + this.armorType;
+        return "Armor class: " + this.armor + " | Armor slot: " + this.slot;
     }
 
     public int getArmor() {
@@ -35,8 +30,8 @@ public class Armor extends Item{
         this.armor += value;
     }
 
-    public ArmorType getArmorType() {
-        return armorType;
+    public ArmorSlot getArmorType() {
+        return slot;
     }
 
     public ArmorSlot getSlot() {

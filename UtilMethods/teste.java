@@ -4,7 +4,7 @@ import Entity.Skill;
 import Entity.Class;
 import Itens.TypeItens.Armor;
 import Entity.Entity;
-import Entity.Entity.ArmorSlot;
+import Entity.Slots.ArmorSlot;
 import Entity.StatType;
 import Itens.Material.Iron;
 import Itens.TypeItens.Potion;
