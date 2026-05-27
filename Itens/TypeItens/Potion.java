@@ -20,7 +20,6 @@ public class Potion extends Item {
         return "Heal a target in " + this.healAmount + " HP";
     }
 
-    @Override
     public void use(Entity target) {
         int hp = target.getHp() + this.healAmount;
         if (hp > target.getMaxHp()){

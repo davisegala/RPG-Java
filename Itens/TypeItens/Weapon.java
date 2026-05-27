@@ -16,12 +16,6 @@ public class Weapon extends Item{
     }
     
     @Override
-    public void equip(Entity target){
-        if (target.getWeapon() != null) target.addItem(target.getWeapon());
-        target.setWeapon(this);
-    }
-    
-    @Override
     public String display() {
         return "Damage: +" + this.damage;
     }

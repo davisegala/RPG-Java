@@ -30,8 +30,8 @@ public class Status {
     public void up(Entity entity) {
         if (entity.getClasse() != null) {
             for (StatType stat : StatType.values()) {
-                int amont = getStat(stat) + entity.classe.getStat(stat) + 1;
-                stats.put(stat, amont);
+                int amount = getStat(stat) + entity.classe.getStat(stat) + 1;
+                stats.put(stat, amount);
             }
         } else {
             up();
@@ -39,8 +39,8 @@ public class Status {
         hp = getMaxHp();
     }
     
-    private boolean canSet(int amont) {
-        if (amont < 1){
+    private boolean canSet(int amount) {
+        if (amount < 1){
             System.out.println("You can't set the status to 1 or less");
             return false;
         }
@@ -67,9 +67,9 @@ public class Status {
         return hp;
     }
 
-    public void setHp(int amont) {
-        if (amont <= getMaxHp()) {
-            this.hp = amont;
+    public void setHp(int amount) {
+        if (amount <= getMaxHp()) {
+            this.hp = amount;
         } else {
             this.hp = getMaxHp();
         }

@@ -1,5 +1,6 @@
 package Entity;
 
+import Itens.Item;
 import Itens.TypeItens.Armor;
 import Itens.TypeItens.Weapon;
 import java.util.HashMap;
@@ -18,9 +19,9 @@ public class Slots {
         }
         return armorClass;
     }
-    
-    public void equipArmor(Armor armor) {
-        armors.put(armor.getSlot(), armor);
+
+    public void equip(Item item) {
+        if (item instanceof Armor armor) armors.put(armor.getSlot(), armor);
     }
     
     public Weapon getWeapon() {

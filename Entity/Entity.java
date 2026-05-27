@@ -6,36 +6,14 @@ import Itens.TypeItens.Weapon;
 
 public class Entity {
     private String name;
-    protected Status status;
-    private Level level;
+    protected Status status = new Status();
+    private Level level = new Level();
     private Skill[] skills;
     private boolean isPlayer = false;
     protected Class classe;
-    private Inventory inventory;
-    private Slots slots;
 
     public Entity(String name){
         this.name = name;
-        this.status = new Status();
-        this.inventory = new Inventory();
-        this.level = new Level();
-        this.slots = new Slots();
-    }
-
-    public void addItem(Item item) {
-        this.inventory.addItem(item);
-    }
-
-    public void addItem(Item item, int amont) {
-        this.inventory.addItem(item, amont);
-    }
-    
-    public int getArmorClass() {
-        return slots.getArmorClass();
-    }
-    
-    public void equipArmor(Armor armor) {
-        slots.equipArmor(armor);
     }
 
     public String getName() {
@@ -79,39 +57,27 @@ public class Entity {
         return status.getHp();
     }
 
-    public void setHp(int amont) {
-        status.setHp(amont);
+    public void setHp(int amount) {
+        status.setHp(amount);
     }
     
     public int getMaxHp(){
         return this.getStat(StatType.RESISTANCE) * 30;
-    }
-
-    public Weapon getWeapon() {
-        return slots.getWeapon();
-    }
-
-    public void setWeapon(Weapon weapon) {
-        this.slots.setWeapon(weapon);
     }
     
     public int getXp() {
         return level.getXp();
     }
     
-    public void addXp(int amont) {
-        this.level.addXp(amont, this);
+    public void addXp(int amount) {
+        this.level.addXp(amount, this);
     }
     
-    public void setLevel(int amont) {
-        this.level.setLevel(amont, this);
+    public void setLevel(int amount) {
+        this.level.setLevel(amount, this);
     }
     
     public int getLevel() {
         return this.level.getLevel();
-    }
-
-    public Inventory getInventory() {
-        return this.inventory;
     }
 }

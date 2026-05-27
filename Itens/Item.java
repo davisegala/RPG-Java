@@ -5,7 +5,6 @@ import Entity.Entity;
 public abstract class Item {
     private String name;
     private Type type;
-    private int price = 100;
     
     public enum Type{
         EQUIPMENT,
@@ -17,18 +16,8 @@ public abstract class Item {
         this.name = name;
         this.type = type;
     }
-
-    public Item(String name, Type type, int price) {
-        this.name = name;
-        this.type = type;
-        this.price = price;
-    }
     
     public abstract String display();
-    
-    public void use(Entity target){
-        
-    };
 
     public void equip(Entity target){
         System.out.println("This item cannot be equipped");
@@ -43,22 +32,14 @@ public abstract class Item {
     }
     
     public void getItemType(){
-
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+        
     }
 
     public boolean getIsEquipment() {
-        return this.type == this.type.EQUIPMENT;
+        return this.type == type.EQUIPMENT;
     }
     
     public boolean getIsMaterial(){
-        return this.type == this.type.MATERIAL;
+        return this.type == type.MATERIAL;
     }
 }

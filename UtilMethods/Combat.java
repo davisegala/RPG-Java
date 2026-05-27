@@ -4,10 +4,8 @@ import Entity.Skill;
 import Entity.Entity;
 import Entity.StatType;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Combat {
-    private Scanner scanner = new Scanner(System.in);
     private Random random = new Random();
     private Input input = new Input();
     

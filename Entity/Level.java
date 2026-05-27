@@ -4,12 +4,10 @@ public class Level {
     private int xp;
     private int level;
     
-    public void addXp(int amont, Entity entity){
-        this.xp += amont;
+    public void addXp(int amount, Entity entity){
+        this.xp += amount;
         
-        while (canUp()) {
-            levelUp(entity);
-        }
+        while (canUp()) levelUp(entity);
         
         System.out.println(entity.getName() + " | xp: [" + xp + "/" + getNecessaryXp() + "]");
     } 

@@ -31,9 +31,7 @@ public class Skill {
         this.baseDamage = baseDamage;
     }
 
-    public StatType getType() {
-        return type;
-    }
+    public StatType getType() { return type; }
 
     public void setType(StatType type) {
         this.type = type;
