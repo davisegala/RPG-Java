@@ -1,0 +1,64 @@
+package Entity;
+
+import Entity.Combat.CombatManager;
+import Entity.Inventory.InventoryManager;
+import Entity.Stats.StatsManager;
+
+public class Entity {
+    private final String name;
+    private Skill[] skills;
+    private boolean isPlayer = false;
+    private Class classe;
+    private final InventoryManager inventoryManager = new InventoryManager();
+    private final StatsManager statsManager = new StatsManager(this);
+    private final CombatManager combatManager = new CombatManager(this);
+
+    public Entity(String name){
+        this.name = name;
+    }
+    
+    public void openInventory() {
+        inventoryManager.open(this);
+    }
+
+    public String getName() {
+        return name;
+    }
+ 
+    public Skill[] getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Skill[] skills) {
+        if (skills.length > 4) return;
+        this.skills = skills;
+    }
+    
+    public void setIsPlayer(boolean type) {
+        this.isPlayer = type;
+    }
+    
+    public boolean isPlayer(){
+        return this.isPlayer;
+    }
+
+    public Class getClasse() {
+        return classe;
+    }
+
+    public void setClasse(Class classe) {
+        this.classe = classe;
+    }
+
+    public InventoryManager getInventoryManager() {
+        return this.inventoryManager;
+    }
+
+    public StatsManager getStatsManager() {
+        return statsManager;
+    }
+
+    public CombatManager getCombatManager() {
+        return combatManager;
+    }
+}
