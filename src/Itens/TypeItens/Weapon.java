@@ -1,24 +1,18 @@
 package Itens.TypeItens;
 
-import Entity.Entity;
-import Itens.Item;
+import Itens.Equipment;
+import Itens.Equipment.Slots;
 
-public class Weapon extends Item{
+public class Weapon extends Equipment{
     private int damage;
     
     public Weapon(String name, int damage) {
-        super(name, Item.Type.EQUIPMENT);
+        super(name, Slots.WEAPON);
         if (damage >= 1) {
             this.damage = damage;
         } else {
             this.damage = 1;
         }
-    }
-    
-    @Override
-    public void equip(Entity target){
-        if (target.getWeapon() != null) target.addItem(target.getWeapon());
-        target.setWeapon(this);
     }
     
     @Override

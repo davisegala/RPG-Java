@@ -1,22 +1,25 @@
-package UtilMethods;
+package Entity.Combat;
 
-import Entity.Skill;
 import Entity.Entity;
+import Entity.Stats.StatType;
+import Itens.Equipment;
+import UtilMethods.Input;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Combat {
-    private Scanner scanner = new Scanner(System.in);
-    private Random random = new Random();
-    private Input input = new Input();
+    private final Random random = new Random();
     
     public void battle(Entity entity1, Entity entity2){
         Entity temp;
-        Entity attacker = entity1.getAgility() >= entity2.getAgility() ? entity1 : entity2;
+        Entity attacker = entity1.getStatsManager().getStat(StatType.AGILITY) >= entity2.getStatsManager().getStat(StatType.AGILITY) ? entity1 : entity2;
         Entity target = attacker == entity1 ? entity2 : entity1;
         
-        while (entity1.getHp() > 0 && entity2.getHp() > 0) {
-            System.out.println("\n"+entity1.getName()+" ["+entity1.getHp()+"/"+entity1.getMaxHp()+"] "+entity2.getName()+" ["+entity2.getHp()+"/"+entity2.getMaxHp()+"] ");
+        while (entity1.getCombatManager().getHp() > 0 && entity2.getCombatManager().getHp() > 0) {
+            System.out.println(
+                "\n"+entity1.getName()+" ["+entity1.getCombatManager().getHp()+
+                "/"+entity1.getCombatManager().getMaxHp()+"] "+
+                entity2.getName()+" ["+entity2.getCombatManager().getHp()+"/"+entity2.getCombatManager().getMaxHp()+"] "
+            );
             if (turn(attacker, target)){
                 return;
             }
@@ -26,7 +29,7 @@ public class Combat {
             target = temp;
         }
         
-        if (entity1.getHp() > 0 && entity2.getHp() <= 0) {
+        if (entity1.getCombatManager().getHp() > 0 && entity2.getCombatManager().getHp() <= 0) {
             isPlayerDie(entity2);
             reward(entity1, entity2);
         } else {
@@ -75,8 +78,8 @@ public class Combat {
         
         while (true){
             System.out.print("\nChoose an action: ");
-            int action = input.inputInt();
-            if (input.choiseInRange(action, 3)) return action;
+            int action = Input.Int();
+            if (Input.choiceInRange(action, 3)) return action;
         }
     }
     
@@ -92,21 +95,21 @@ public class Combat {
         int i;
         while (true) {
             System.out.print("Choose your skill: ");
-            i = input.inputInt();
-            if (input.choiseInRange(i, entity.getSkills().length)) break;
+            i = Input.Int();
+            if (Input.choiceInRange(i, entity.getCombatManager().getSkills().length)) break;
         }
 
-        return entity.getSkills()[i - 1];
+        return entity.getCombatManager().getSkills()[i - 1];
     }
   
     private Skill randomSkill(Entity entity){
-            int index = random.nextInt(entity.getSkills().length);
-            return entity.getSkills()[index];
+            int index = random.nextInt(entity.getCombatManager().getSkills().length);
+            return entity.getCombatManager().getSkills()[index];
     }
     
     private void printSkills(Entity entity){
         int x = 1;
-        for (Skill i : entity.getSkills()){
+        for (Skill i : entity.getCombatManager().getSkills()){
             System.out.print(i.getName()+ " ["+x+"]    ");
             x++;
         }
@@ -115,44 +118,54 @@ public class Combat {
     private void useSkill(Entity attacker, Skill skill, Entity target){
         int damage = getDamage(attacker, skill, target);
         
-        target.setHp(target.getHp() - damage);
+        target.getCombatManager().setHp(target.getCombatManager().getHp() - damage);
         
         System.out.println(attacker.getName()+" used "+skill.getName()+" and dealt "+damage+" damage");
     }
     
     private int getDamage(Entity attacker, Skill skill, Entity target){
-        int damage = (skill.getType().getValue(attacker) * skill.getBaseDamage()) - target.getArmorClass();
+        int damage = calcDamage(attacker, skill, target);
+
+        int dodgeChance = target.getStatsManager().getStat(StatType.AGILITY);
+        if (dodgeChance > 50) dodgeChance = 50;
+        int dodgeRoll = random.nextInt(100);
+
+        if (dodgeRoll < dodgeChance) {
+            System.out.println("--- Dodge");
+            return 0;
+        }
+
+        int critChance = attacker.getStatsManager().getStat(StatType.AGILITY);
+        if (critChance > 50) critChance = 50;
+        int critRoll = random.nextInt(100);
+        
+        if (critRoll < critChance) {
+            damage *= 2;
+            System.out.println("--- Critical attack");
+        }
+
+        return damage;
+    }
+    
+    private int calcDamage(Entity attacker, Skill skill, Entity target){
+        int damage = (skill.getDamage(attacker)) - target.getInventoryManager().getArmorClass();
         if (damage < 0) damage = 0;
-        if (attacker.getWeapon() != null) damage += attacker.getWeapon().getDamage();
+        if (attacker.getInventoryManager().getEquipment(Equipment.Slots.WEAPON) != null) {
+            damage += attacker.getInventoryManager().getWeaponDamage();
+        }
         return damage;
     }
     
     private boolean canRun(Entity entity, Entity attacker){
-        return random.nextInt(entity.getAgility()) > random.nextInt(attacker.getAgility());
+        return random.nextInt(entity.getStatsManager().getStat(StatType.AGILITY)) > random.nextInt(attacker.getStatsManager().getStat(StatType.AGILITY));
     }
     
     private void reward(Entity winner, Entity loser){
-        int xp = loser.getLevel() * 100;
-        winner.gainXp(xp);
+        int xp = loser.getStatsManager().getLevel() * 100;
+        winner.getStatsManager().addXp(xp);
     }
     
     private void openInventory(Entity attacker){
-        attacker.getInventory().open(attacker);
+        attacker.openInventory();
     }
-    
-    /*
-    private Entity getTarget(Entity entity, Entity target){
-        System.out.println("Select a target: ");
-        System.out.println("[1] Yourself");
-        System.out.println("[2] Enemy");
-        
-        int num = input.inputChoise(2);
-        
-        if (num == 1) {
-            return entity;
-        } else {
-            return target;
-        }
-    }
-    */
 }

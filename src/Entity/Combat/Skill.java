@@ -1,16 +1,21 @@
-package Entity;
+package Entity.Combat;
 
-
+import Entity.Entity;
+import Entity.Stats.StatType;
 
 public class Skill {
     private String name;
     private int baseDamage;
-    private TypeStatus type;
+    private StatType type;
 
-    public Skill(String name, int baseDamage, TypeStatus type) {
+    public Skill(String name, int baseDamage, StatType type) {
         this.name = name;
         this.baseDamage = baseDamage;
         this.type = type;
+    }
+    
+    public int getDamage(Entity entity) {
+        return this.baseDamage * entity.getStatsManager().getStat(this.type);
     }
 
     public String getName() {
@@ -29,11 +34,9 @@ public class Skill {
         this.baseDamage = baseDamage;
     }
 
-    public TypeStatus getType() {
-        return type;
-    }
+    public StatType getType() { return type; }
 
-    public void setType(TypeStatus type) {
+    public void setType(StatType type) {
         this.type = type;
     }
 }

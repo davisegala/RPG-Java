@@ -1,10 +1,10 @@
 package Itens.Material;
 
+import Entity.Entity;
 import Itens.TypeItens.Weapon;
 import Itens.TypeItens.Armor;
 
 public class Iron extends Material{
-
     public Iron() {
         super("Iron", 64);
     }
@@ -18,4 +18,9 @@ public class Iron extends Material{
     public void armorProperty(Armor armor) {
         armor.addArmor(3);
     }    
+
+    @Override
+    public void use(Entity target) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
