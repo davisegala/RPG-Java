@@ -3,7 +3,6 @@ package Entity;
 import Entity.Combat.CombatManager;
 import Entity.Inventory.InventoryManager;
 import Entity.Stats.StatsManager;
-import java.awt.Image;
 
 public class Entity {
     private final String name;
@@ -12,11 +11,9 @@ public class Entity {
     private final InventoryManager inventoryManager = new InventoryManager();
     private final StatsManager statsManager = new StatsManager(this);
     private final CombatManager combatManager = new CombatManager(this);
-    private Image model;
 
-    public Entity(String name, Image model){
+    public Entity(String name){
         this.name = name;
-        this.model = model;
     }
     
     public void openInventory() {
@@ -53,13 +50,5 @@ public class Entity {
 
     public CombatManager getCombatManager() {
         return combatManager;
-    }
-
-    public Image getModel() {
-        return model;
-    }
-
-    public void setModel(Image model) {
-        this.model = model;
     }
 }

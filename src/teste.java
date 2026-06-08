@@ -8,7 +8,8 @@ import Itens.Item;
 import Itens.TypeItens.Potion;
 
 public class teste {
-    public static void main(String[] args) {        
+    public static void main(String[] args) {
+        
         // Skills
         Skill lunge = new Skill("Lunge", 5, StatType.STRENGTH);
         Skill manaBall = new Skill("Mana ball", 7, StatType.SORCERY);
