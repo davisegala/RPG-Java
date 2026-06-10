@@ -3,21 +3,18 @@ package Entity.Combat;
 import Entity.Entity;
 import Entity.Stats.StatType;
 import Vision.CombatScreen;
-import javax.swing.JFrame;
 
 public class CombatManager {
     private final Entity entity;
     private int hp;
     private Skill[] skills;
-    private final Combat combat = new Combat();
-    private final CombatScreen screen = new CombatScreen();
 
     public CombatManager(Entity entity) {
         this.entity = entity;
     }
     
     public void startCombat(Entity target) {
-        combat.battle(entity, target, screen);
+        new CombatScreen().startBattle(entity, target);
     }
     
     public Skill[] getSkills() {

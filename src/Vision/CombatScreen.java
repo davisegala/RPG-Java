@@ -1,26 +1,26 @@
 package Vision;
 
+import Control.Entity.Combat.Combat;
 import Entity.Combat.Skill;
 import Entity.Entity;
 import javax.swing.JButton;
 
 public class CombatScreen extends javax.swing.JFrame {
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CombatScreen.class.getName());
-    private JButton[] JButtonSkills;
-    private Entity attacker;
-    private Entity targuet;
+    private final Combat combat = new Combat();
+    
+    private final JButton[] JButtonSkills;
+    private Entity player;
+    private Entity enemy;
+    private boolean isPlayerTurn = true;
     
     public CombatScreen() {
         initComponents();
         this.JButtonSkills = new JButton[] {jButtonSkill1, jButtonSkill2, jButtonSkill3, jButtonSkill4};
     }
     
-    public void init(Entity attacker, Entity targuet) {
-        this.attacker = attacker;
-        this.targuet = targuet;
-        
+    public void init(Entity player, Entity enemy) {
         int x = 0;
-        for (Skill skill : attacker.getCombatManager().getSkills()) {
+        for (Skill skill : player.getCombatManager().getSkills()) {
             this.JButtonSkills[x].setText(skill.getName());
             x++;
         }
@@ -29,12 +29,50 @@ public class CombatScreen extends javax.swing.JFrame {
     }
     
     public void refreshInfo() {
-        jLabelAttackerHp.setText(
-                String.valueOf(attacker.getCombatManager().getHp()) + "/" + String.valueOf(attacker.getCombatManager().getMaxHp())
+        jLabelPlayerHp.setText(
+            String.valueOf(player.getCombatManager().getHp()) + "/" + String.valueOf(player.getCombatManager().getMaxHp())
         );
-        jLabelTarguetHp.setText(String.valueOf(
-                targuet.getCombatManager().getHp()) + "/" + String.valueOf(targuet.getCombatManager().getMaxHp())
+        jLabelEnemyHp.setText(String.valueOf(
+            enemy.getCombatManager().getHp()) + "/" + String.valueOf(enemy.getCombatManager().getMaxHp())
         );
+    }
+    
+    public void startBattle(Entity player, Entity enemy) {
+        this.player = player;
+        this.enemy = enemy;
+        
+        init(player, enemy);
+        
+        this.setVisible(true);
+        
+        while (player.getCombatManager().getHp() > 0 && enemy.getCombatManager().getHp() > 0) {
+            if (!isPlayerTurn) enemyTurn();
+            this.refreshInfo();
+        }
+        
+        if (player.getCombatManager().getHp() > 0 && enemy.getCombatManager().getHp() <= 0) {
+            combat.isPlayerDie(enemy);
+            combat.reward(player, enemy);
+        } else {
+            combat.isPlayerDie(player);
+            combat.reward(player, player);
+        }
+    }
+    
+    private void enemyTurn() {
+        combat.useSkill(enemy, combat.randomSkill(enemy), player);
+        isPlayerTurn = true;
+    }
+    
+    public void useSkill(int index) {
+        try {
+            Skill skill = player.getCombatManager().getSkills()[index];
+            if (isPlayerTurn) {
+                combat.useSkill(player, skill, enemy);
+                isPlayerTurn = false;
+                this.refreshInfo();
+            }
+        } catch (Exception e) {}
     }
 
     @SuppressWarnings("unchecked")
@@ -54,11 +92,11 @@ public class CombatScreen extends javax.swing.JFrame {
         jButtonSkill3 = new javax.swing.JButton();
         jButtonSkill4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabelTarguetHp = new javax.swing.JLabel();
+        jLabelEnemyHp = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
-        jLabelAttackerHp = new javax.swing.JLabel();
+        jLabelPlayerHp = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -208,9 +246,9 @@ public class CombatScreen extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(147, 177, 166));
 
-        jLabelTarguetHp.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 18)); // NOI18N
-        jLabelTarguetHp.setForeground(new java.awt.Color(4, 13, 18));
-        jLabelTarguetHp.setText("000/000");
+        jLabelEnemyHp.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 18)); // NOI18N
+        jLabelEnemyHp.setForeground(new java.awt.Color(4, 13, 18));
+        jLabelEnemyHp.setText("000/000");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -218,14 +256,14 @@ public class CombatScreen extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelTarguetHp)
+                .addComponent(jLabelEnemyHp)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabelTarguetHp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelEnemyHp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -252,9 +290,9 @@ public class CombatScreen extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(147, 177, 166));
 
-        jLabelAttackerHp.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 18)); // NOI18N
-        jLabelAttackerHp.setForeground(new java.awt.Color(4, 13, 18));
-        jLabelAttackerHp.setText("000/000");
+        jLabelPlayerHp.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 18)); // NOI18N
+        jLabelPlayerHp.setForeground(new java.awt.Color(4, 13, 18));
+        jLabelPlayerHp.setText("000/000");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -262,14 +300,14 @@ public class CombatScreen extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabelAttackerHp)
+                .addComponent(jLabelPlayerHp)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addGap(0, 8, Short.MAX_VALUE)
-                .addComponent(jLabelAttackerHp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelPlayerHp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -320,23 +358,23 @@ public class CombatScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAttackActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonAttackActionPerformed
 
     private void jButtonSkill1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkill1ActionPerformed
-        // TODO add your handling code here:
+        useSkill(0);
     }//GEN-LAST:event_jButtonSkill1ActionPerformed
 
     private void jButtonSkill2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkill2ActionPerformed
-        // TODO add your handling code here:
+        useSkill(1);
     }//GEN-LAST:event_jButtonSkill2ActionPerformed
 
     private void jButtonSkill3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkill3ActionPerformed
-        // TODO add your handling code here:
+        useSkill(2);
     }//GEN-LAST:event_jButtonSkill3ActionPerformed
 
     private void jButtonSkill4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkill4ActionPerformed
-        // TODO add your handling code here:
+        useSkill(3);
     }//GEN-LAST:event_jButtonSkill4ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -348,8 +386,8 @@ public class CombatScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSkill3;
     private javax.swing.JButton jButtonSkill4;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelAttackerHp;
-    private javax.swing.JLabel jLabelTarguetHp;
+    private javax.swing.JLabel jLabelEnemyHp;
+    private javax.swing.JLabel jLabelPlayerHp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
