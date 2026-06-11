@@ -3,6 +3,7 @@ package Vision;
 import Control.Entity.Combat.Combat;
 import Entity.Combat.Skill;
 import Entity.Entity;
+import Itens.Item;
 import javax.swing.JButton;
 
 public class CombatScreen extends javax.swing.JFrame {
@@ -19,6 +20,7 @@ public class CombatScreen extends javax.swing.JFrame {
     }
     
     public void init(Entity player, Entity enemy) {
+        jPanelAttack.setVisible(false);
         int x = 0;
         for (Skill skill : player.getCombatManager().getSkills()) {
             this.JButtonSkills[x].setText(skill.getName());
@@ -35,6 +37,7 @@ public class CombatScreen extends javax.swing.JFrame {
         jLabelEnemyHp.setText(String.valueOf(
             enemy.getCombatManager().getHp()) + "/" + String.valueOf(enemy.getCombatManager().getMaxHp())
         );
+        printInventory();
     }
     
     public void startBattle(Entity player, Entity enemy) {
@@ -42,8 +45,6 @@ public class CombatScreen extends javax.swing.JFrame {
         this.enemy = enemy;
         
         init(player, enemy);
-        
-        this.setVisible(true);
         
         while (player.getCombatManager().getHp() > 0 && enemy.getCombatManager().getHp() > 0) {
             if (!isPlayerTurn) enemyTurn();
@@ -74,23 +75,35 @@ public class CombatScreen extends javax.swing.JFrame {
             }
         } catch (Exception e) {}
     }
+    
+    public void printInventory() {
+        jComboBox1.removeAllItems();
+        for (Item item : player.getInventoryManager().getInventory().keySet()) {
+            try {
+                jComboBox1.addItem(item.getName());
+            } catch (Exception e) {}
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        jPanelAttack = new javax.swing.JPanel();
+        jButtonSkill1 = new javax.swing.JButton();
+        jButtonSkill2 = new javax.swing.JButton();
+        jButtonSkill3 = new javax.swing.JButton();
+        jButtonSkill4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButtonAttack = new javax.swing.JButton();
         jButtonInventory = new javax.swing.JButton();
         jButtonRun = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jButtonSkill1 = new javax.swing.JButton();
-        jButtonSkill2 = new javax.swing.JButton();
-        jButtonSkill3 = new javax.swing.JButton();
-        jButtonSkill4 = new javax.swing.JButton();
+        jPanelInventory = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jLabelItemDisplay = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabelEnemyHp = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -98,7 +111,62 @@ public class CombatScreen extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabelPlayerHp = new javax.swing.JLabel();
 
-        jLabel2.setText("jLabel2");
+        jPanelAttack.setBackground(new java.awt.Color(92, 131, 116));
+
+        jButtonSkill1.setBackground(new java.awt.Color(158, 200, 185));
+        jButtonSkill1.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 14)); // NOI18N
+        jButtonSkill1.setForeground(new java.awt.Color(4, 13, 18));
+        jButtonSkill1.setText("Attack1");
+        jButtonSkill1.addActionListener(this::jButtonSkill1ActionPerformed);
+
+        jButtonSkill2.setBackground(new java.awt.Color(158, 200, 185));
+        jButtonSkill2.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 14)); // NOI18N
+        jButtonSkill2.setForeground(new java.awt.Color(4, 13, 18));
+        jButtonSkill2.setText("Attack1");
+        jButtonSkill2.addActionListener(this::jButtonSkill2ActionPerformed);
+
+        jButtonSkill3.setBackground(new java.awt.Color(158, 200, 185));
+        jButtonSkill3.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 14)); // NOI18N
+        jButtonSkill3.setForeground(new java.awt.Color(4, 13, 18));
+        jButtonSkill3.setText("Attack1");
+        jButtonSkill3.addActionListener(this::jButtonSkill3ActionPerformed);
+
+        jButtonSkill4.setBackground(new java.awt.Color(158, 200, 185));
+        jButtonSkill4.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 14)); // NOI18N
+        jButtonSkill4.setForeground(new java.awt.Color(4, 13, 18));
+        jButtonSkill4.setText("Attack1");
+        jButtonSkill4.addActionListener(this::jButtonSkill4ActionPerformed);
+
+        javax.swing.GroupLayout jPanelAttackLayout = new javax.swing.GroupLayout(jPanelAttack);
+        jPanelAttack.setLayout(jPanelAttackLayout);
+        jPanelAttackLayout.setHorizontalGroup(
+            jPanelAttackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAttackLayout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(jPanelAttackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelAttackLayout.createSequentialGroup()
+                        .addComponent(jButtonSkill4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jButtonSkill3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAttackLayout.createSequentialGroup()
+                        .addComponent(jButtonSkill1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jButtonSkill2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36))
+        );
+        jPanelAttackLayout.setVerticalGroup(
+            jPanelAttackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAttackLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanelAttackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSkill1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSkill2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanelAttackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSkill4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSkill3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Combat");
@@ -115,103 +183,71 @@ public class CombatScreen extends javax.swing.JFrame {
         jButtonAttack.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 18)); // NOI18N
         jButtonAttack.setForeground(new java.awt.Color(4, 13, 18));
         jButtonAttack.setText("Attack");
-        jButtonAttack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonAttack.addActionListener(this::jButtonAttackActionPerformed);
 
         jButtonInventory.setBackground(new java.awt.Color(92, 131, 116));
         jButtonInventory.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 18)); // NOI18N
         jButtonInventory.setForeground(new java.awt.Color(4, 13, 18));
         jButtonInventory.setText("Inventory");
-        jButtonInventory.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonInventory.addActionListener(this::jButtonInventoryActionPerformed);
 
         jButtonRun.setBackground(new java.awt.Color(92, 131, 116));
         jButtonRun.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 18)); // NOI18N
         jButtonRun.setForeground(new java.awt.Color(4, 13, 18));
         jButtonRun.setText("Run");
-        jButtonRun.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jPanel3.setBackground(new java.awt.Color(92, 131, 116));
 
-        jPanel7.setBackground(new java.awt.Color(92, 131, 116));
+        jPanelInventory.setBackground(new java.awt.Color(92, 131, 116));
 
-        jButtonSkill1.setBackground(new java.awt.Color(158, 200, 185));
-        jButtonSkill1.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 14)); // NOI18N
-        jButtonSkill1.setForeground(new java.awt.Color(4, 13, 18));
-        jButtonSkill1.setText("Attack1");
-        jButtonSkill1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonSkill1.addActionListener(this::jButtonSkill1ActionPerformed);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(this::jComboBox1ActionPerformed);
 
-        jButtonSkill2.setBackground(new java.awt.Color(158, 200, 185));
-        jButtonSkill2.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 14)); // NOI18N
-        jButtonSkill2.setForeground(new java.awt.Color(4, 13, 18));
-        jButtonSkill2.setText("Attack1");
-        jButtonSkill2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonSkill2.addActionListener(this::jButtonSkill2ActionPerformed);
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setText("Use");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
-        jButtonSkill3.setBackground(new java.awt.Color(158, 200, 185));
-        jButtonSkill3.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 14)); // NOI18N
-        jButtonSkill3.setForeground(new java.awt.Color(4, 13, 18));
-        jButtonSkill3.setText("Attack1");
-        jButtonSkill3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonSkill3.addActionListener(this::jButtonSkill3ActionPerformed);
-
-        jButtonSkill4.setBackground(new java.awt.Color(158, 200, 185));
-        jButtonSkill4.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 14)); // NOI18N
-        jButtonSkill4.setForeground(new java.awt.Color(4, 13, 18));
-        jButtonSkill4.setText("Attack1");
-        jButtonSkill4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonSkill4.addActionListener(this::jButtonSkill4ActionPerformed);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jButtonSkill4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jButtonSkill3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jButtonSkill1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(jButtonSkill2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36))
+        javax.swing.GroupLayout jPanelInventoryLayout = new javax.swing.GroupLayout(jPanelInventory);
+        jPanelInventory.setLayout(jPanelInventoryLayout);
+        jPanelInventoryLayout.setHorizontalGroup(
+            jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInventoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelItemDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelInventoryLayout.createSequentialGroup()
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSkill1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSkill2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSkill4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSkill3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+        jPanelInventoryLayout.setVerticalGroup(
+            jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInventoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelInventoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox1)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabelItemDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 136, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -336,7 +372,7 @@ public class CombatScreen extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -358,7 +394,8 @@ public class CombatScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAttackActionPerformed
-
+       jPanelAttack.setVisible(true);
+       jPanelInventory.setVisible(false);
     }//GEN-LAST:event_jButtonAttackActionPerformed
 
     private void jButtonSkill1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSkill1ActionPerformed
@@ -377,7 +414,27 @@ public class CombatScreen extends javax.swing.JFrame {
         useSkill(3);
     }//GEN-LAST:event_jButtonSkill4ActionPerformed
 
+    private void jButtonInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInventoryActionPerformed
+        jPanelInventory.setVisible(true);
+        jPanelAttack.setVisible(false);
+    }//GEN-LAST:event_jButtonInventoryActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        jLabelItemDisplay.setText(
+            player.getInventoryManager().getItem(
+                jComboBox1.getSelectedIndex()
+            ).display()
+        );
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (isPlayerTurn) {
+            player.getInventoryManager().getItem(jComboBox1.getSelectedIndex()).use(player);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAttack;
     private javax.swing.JButton jButtonInventory;
     private javax.swing.JButton jButtonRun;
@@ -385,8 +442,9 @@ public class CombatScreen extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSkill2;
     private javax.swing.JButton jButtonSkill3;
     private javax.swing.JButton jButtonSkill4;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabelEnemyHp;
+    private javax.swing.JLabel jLabelItemDisplay;
     private javax.swing.JLabel jLabelPlayerHp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -394,7 +452,8 @@ public class CombatScreen extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanelAttack;
+    private javax.swing.JPanel jPanelInventory;
     // End of variables declaration//GEN-END:variables
 }

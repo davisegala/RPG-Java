@@ -65,8 +65,4 @@ public class Combat {
         int xp = loser.getStatsManager().getLevel() * 100;
         winner.getStatsManager().addXp(xp);
     }
-    
-    public void openInventory(Entity entity){
-        entity.openInventory();
-    }
 }

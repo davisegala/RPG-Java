@@ -15,10 +15,6 @@ public class Entity {
     public Entity(String name){
         this.name = name;
     }
-    
-    public void openInventory() {
-        inventoryManager.open(this);
-    }
 
     public String getName() {
         return name;

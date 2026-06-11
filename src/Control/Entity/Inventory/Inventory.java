@@ -8,21 +8,6 @@ import java.util.Map;
 public class Inventory {
     private Map<Item, Integer> inventory = new LinkedHashMap<>();
 
-    public void print() {
-        System.out.println("\n============= Inventory =============");
-
-        int x = 0;
-        for (Item item : inventory.keySet()) {
-            try {
-                System.out.println(
-                    "--> [" + (x + 1) + "] " + item.getName() +
-                    " - " + inventory.get(item) + "x - " + item.display()
-                );
-                x++;
-            } catch (Exception e) {}
-        }
-    }
-
     public void addItem(Item item){
         inventory.merge(item, 1, Integer::sum);
     }
@@ -56,6 +41,10 @@ public class Inventory {
     public Item getItem(int position) {
         if (position < 0 || position >= inventory.size()) return null;
         return (Item) inventory.keySet().toArray()[position];
+    }
+    
+    public Map<Item, Integer> getInventory() {
+        return this.inventory;
     }
 
     public int getInventorySize() {

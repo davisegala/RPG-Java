@@ -5,7 +5,6 @@ import Itens.Equipment;
 import Itens.Item;
 import Itens.TypeItens.Armor;
 import Itens.TypeItens.Weapon;
-import UtilMethods.Input;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,18 +57,19 @@ public class InventoryManager{
         }
     }
     
-    public void open(Entity target) {
-        inventory.print();
-
-        System.out.println("\n[0] To close");
-        System.out.print("\nSelect an item: ");
-
-        int num = Input.Choose(0, inventory.getInventorySize());
-        if (num == 0) {
-            return;
-        } else {
-            Item item = inventory.getItem(num - 1);
-            item.use(target);
-        }
+    public void useItem(Item item, Entity target) {
+        item.use(target);
+    }
+    
+    public void useItem(int index, Entity target) {
+        inventory.getItem(index).use(target);
+    }
+    
+    public Map<Item, Integer> getInventory() {
+        return inventory.getInventory();
+    }
+    
+    public Item getItem(int position) {
+        return inventory.getItem(position);
     }
 }
