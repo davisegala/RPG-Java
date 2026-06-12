@@ -1,16 +1,16 @@
-package Entity.Inventory;
+package Control.Entity.Inventory;
 
-import Entity.Entity;
-import Itens.Equipment;
-import Itens.Item;
-import Itens.TypeItens.Armor;
-import Itens.TypeItens.Weapon;
+import Control.Entity.Entity;
+import Control.Itens.Equipment;
+import Control.Itens.Item;
+import Control.Itens.TypeItens.Armor;
+import Control.Itens.TypeItens.Weapon;
 import java.util.HashMap;
 import java.util.Map;
 
 public class InventoryManager{
-    private Inventory inventory = new Inventory();
-    private Map<Equipment.Slots, Item> equipment = new HashMap<>();
+    private final Inventory inventory = new Inventory();
+    private final Map<Equipment.Slots, Item> equipment = new HashMap<>();
 
     public int getArmorClass() {
         int armorClass = 0;

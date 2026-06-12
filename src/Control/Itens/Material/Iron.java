@@ -1,8 +1,8 @@
-package Itens.Material;
+package Control.Itens.Material;
 
-import Entity.Entity;
-import Itens.TypeItens.Weapon;
-import Itens.TypeItens.Armor;
+import Control.Entity.Entity;
+import Control.Itens.TypeItens.Weapon;
+import Control.Itens.TypeItens.Armor;
 
 public class Iron extends Material{
     public Iron() {

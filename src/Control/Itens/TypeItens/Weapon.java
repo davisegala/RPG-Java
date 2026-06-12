@@ -1,7 +1,7 @@
-package Itens.TypeItens;
+package Control.Itens.TypeItens;
 
-import Itens.Equipment;
-import Itens.Equipment.Slots;
+import Control.Itens.Equipment;
+import Control.Itens.Equipment.Slots;
 
 public class Weapon extends Equipment{
     private int damage;

@@ -1,7 +1,7 @@
-package Itens.TypeItens;
+package Control.Itens.TypeItens;
 
-import Entity.Entity;
-import Itens.Consumable;
+import Control.Entity.Entity;
+import Control.Itens.Consumable;
 
 public class Potion extends Consumable {
     private final int healAmount;

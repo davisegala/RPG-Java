@@ -1,8 +1,8 @@
-package Entity;
+package Control.Entity;
 
-import Entity.Combat.CombatManager;
-import Entity.Inventory.InventoryManager;
-import Entity.Stats.StatsManager;
+import Control.Entity.Combat.CombatManager;
+import Control.Entity.Inventory.InventoryManager;
+import Control.Entity.Stats.StatsManager;
 
 public class Entity {
     private final String name;

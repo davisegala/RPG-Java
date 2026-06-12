@@ -1,6 +1,6 @@
-package Entity.Stats;
+package Control.Entity.Stats;
 
-import Entity.Entity;
+import Control.Entity.Entity;
 
 public class StatsManager {
     private Stats stats = new Stats();

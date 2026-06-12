@@ -1,6 +1,6 @@
-package NPC;
+package Control.NPC;
 
-import Entity.Inventory.InventoryManager;
+import Control.Entity.Inventory.InventoryManager;
 
 public abstract class Merchant{
     private final String name;

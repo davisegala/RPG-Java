@@ -1,7 +1,7 @@
-package Entity.Combat;
+package Control.Entity.Combat;
 
-import Entity.Entity;
-import Entity.Stats.StatType;
+import Control.Entity.Entity;
+import Control.Entity.Stats.StatType;
 
 public class Skill {
     private String name;

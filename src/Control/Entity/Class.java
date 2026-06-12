@@ -1,12 +1,12 @@
-package Entity;
+package Control.Entity;
 
-import Entity.Stats.StatType;
+import Control.Entity.Stats.StatType;
 
 import java.util.EnumMap;
 
 public class Class {
     private String name;
-    private EnumMap<StatType, Integer> bonusStats = new EnumMap<>(StatType.class);
+    private final EnumMap<StatType, Integer> bonusStats = new EnumMap<>(StatType.class);
 
     public Class(String name) {
         this.name = name;

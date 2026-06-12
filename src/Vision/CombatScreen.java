@@ -1,9 +1,9 @@
 package Vision;
 
 import Control.Entity.Combat.Combat;
-import Entity.Combat.Skill;
-import Entity.Entity;
-import Itens.Item;
+import Control.Entity.Combat.Skill;
+import Control.Entity.Entity;
+import Control.Itens.Item;
 import javax.swing.JButton;
 
 public class CombatScreen extends javax.swing.JFrame {
@@ -21,6 +21,7 @@ public class CombatScreen extends javax.swing.JFrame {
     
     public void init(Entity player, Entity enemy) {
         jPanelAttack.setVisible(false);
+        jPanelInventory.setVisible(false);
         int x = 0;
         for (Skill skill : player.getCombatManager().getSkills()) {
             this.JButtonSkills[x].setText(skill.getName());
@@ -45,27 +46,33 @@ public class CombatScreen extends javax.swing.JFrame {
         this.enemy = enemy;
         
         init(player, enemy);
-        
-        while (player.getCombatManager().getHp() > 0 && enemy.getCombatManager().getHp() > 0) {
-            if (!isPlayerTurn) enemyTurn();
-        }
-        
-        combat.end(player, enemy);
     }
     
     private void enemyTurn() {
         combat.useSkill(enemy, combat.randomSkill(enemy), player);
         refreshInfo();
+
+        if (player.getCombatManager().getHp() <= 0) combat.end(player, enemy);
+        
         isPlayerTurn = true;
     }
     
     public void useSkill(int index) {
         try {
             if (isPlayerTurn) {
-                Skill skill = player.getCombatManager().getSkills()[index];
-                combat.useSkill(player, skill, enemy);
                 isPlayerTurn = false;
-                this.refreshInfo();
+                
+                Skill skill = player.getCombatManager().getSkills()[index];
+
+                combat.useSkill(player, skill, enemy);
+                refreshInfo();
+
+                if (enemy.getCombatManager().getHp() <= 0) {
+                    combat.end(player, enemy);
+                    return;
+                }
+                
+                enemyTurn();
             }
         } catch (Exception e) {}
     }
@@ -109,7 +116,6 @@ public class CombatScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Combat");
         setBackground(new java.awt.Color(7, 15, 43));
-        setPreferredSize(new java.awt.Dimension(768, 576));
         setResizable(false);
         setSize(new java.awt.Dimension(768, 576));
 
@@ -384,7 +390,7 @@ public class CombatScreen extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -440,6 +446,7 @@ public class CombatScreen extends javax.swing.JFrame {
             player.getInventoryManager().getItem(jComboBox1.getSelectedIndex()).use(player);
             refreshInfo();
             isPlayerTurn = false;
+            enemyTurn();
         }
     }//GEN-LAST:event_jButtonUseItemActionPerformed
 

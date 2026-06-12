@@ -1,4 +1,4 @@
-package Entity.Stats;
+package Control.Entity.Stats;
 
 import java.util.EnumMap;
 

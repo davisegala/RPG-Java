@@ -1,6 +1,6 @@
-package Itens.TypeItens;
+package Control.Itens.TypeItens;
 
-import Itens.Equipment;
+import Control.Itens.Equipment;
 
 public class Armor extends Equipment{
     private int armor;

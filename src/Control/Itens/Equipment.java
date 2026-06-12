@@ -1,6 +1,6 @@
-package Itens;
+package Control.Itens;
 
-import Entity.Entity;
+import Control.Entity.Entity;
 
 public class Equipment extends Item{
     public enum Slots{HELMET, CHESTPLATE, LEGGINGS, BOOTS, WEAPON}    

@@ -1,11 +1,11 @@
-import Entity.Combat.Skill;
-import Entity.Class;
-import Itens.TypeItens.Armor;
-import Entity.Entity;
-import Entity.Stats.StatType;
-import Itens.Equipment.Slots;
-import Itens.Item;
-import Itens.TypeItens.Potion;
+import Control.Entity.Combat.Skill;
+import Control.Entity.Class;
+import Control.Itens.TypeItens.Armor;
+import Control.Entity.Entity;
+import Control.Entity.Stats.StatType;
+import Control.Itens.Equipment.Slots;
+import Control.Itens.Item;
+import Control.Itens.TypeItens.Potion;
 
 public class teste {
     public static void main(String[] args) {

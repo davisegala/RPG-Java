@@ -1,6 +1,6 @@
-package Itens;
+package Control.Itens;
 
-import Entity.Entity;
+import Control.Entity.Entity;
 
 public abstract class Consumable extends Item{
     public Consumable(String name) {

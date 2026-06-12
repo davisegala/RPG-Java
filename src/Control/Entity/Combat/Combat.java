@@ -1,16 +1,19 @@
 package Control.Entity.Combat;
 
-import Entity.Combat.Skill;
-import Entity.Entity;
-import Entity.Stats.StatType;
-import Itens.Equipment;
+import Control.Entity.Entity;
+import Control.Entity.Stats.StatType;
+import Control.Itens.Equipment;
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class Combat {
     private final Random random = new Random();
     
     public void isPlayerDie(Entity entity){
-        if (entity.isPlayer()) System.exit(0);
+        if (entity.isPlayer()) {
+            JOptionPane.showMessageDialog(null, "You die");
+            System.exit(0);
+        }
     }
     
     public Skill randomSkill(Entity entity){

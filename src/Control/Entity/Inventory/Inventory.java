@@ -1,6 +1,6 @@
-package Entity.Inventory;
+package Control.Entity.Inventory;
 
-import Itens.Item;
+import Control.Itens.Item;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

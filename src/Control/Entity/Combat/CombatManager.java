@@ -1,20 +1,21 @@
-package Entity.Combat;
+package Control.Entity.Combat;
 
-import Entity.Entity;
-import Entity.Stats.StatType;
+import Control.Entity.Entity;
+import Control.Entity.Stats.StatType;
 import Vision.CombatScreen;
 
 public class CombatManager {
     private final Entity entity;
     private int hp;
     private Skill[] skills;
+    private final CombatScreen combatScreen = new CombatScreen();
 
     public CombatManager(Entity entity) {
         this.entity = entity;
     }
     
     public void startCombat(Entity target) {
-        new CombatScreen().startBattle(entity, target);
+        combatScreen.startBattle(entity, target);
     }
     
     public Skill[] getSkills() {
