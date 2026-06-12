@@ -61,8 +61,30 @@ public class Combat {
         return random.nextInt(entity.getStatsManager().getStat(StatType.AGILITY)) > random.nextInt(attacker.getStatsManager().getStat(StatType.AGILITY));
     }
     
-    public void reward(Entity winner, Entity loser){
+    public void run(Entity entity, Entity enemy) {
+        if (canRun(entity, enemy)) end(entity);
+    }
+    
+    private void reward(Entity winner, Entity loser){
         int xp = loser.getStatsManager().getLevel() * 100;
         winner.getStatsManager().addXp(xp);
+    }
+    
+    public void end(Entity entity1, Entity entity2) {
+        int hp1 = entity1.getCombatManager().getHp();
+        int hp2 = entity2.getCombatManager().getHp();
+        
+        if (hp1 > 0 && hp2 <= 0) {
+            isPlayerDie(entity2);
+            reward(entity1, entity2);
+        } 
+        else if (hp2 > 0 && hp1 <= 0) {
+            isPlayerDie(entity1);
+            reward(entity2, entity1);
+        }
+    }
+    
+    public void end(Entity entity) {
+        isPlayerDie(entity);
     }
 }
