@@ -89,5 +89,6 @@ public class Combat {
     
     public void end(Entity entity) {
         isPlayerDie(entity);
+        System.out.println("end");
     }
 }
