@@ -53,10 +53,10 @@ public class Combat {
     }
     
     public int calcDamage(Entity attacker, Skill skill, Entity target){
-        int damage = (skill.getDamage(attacker)) - target.getInventoryManager().getArmorClass();
+        int damage = (skill.getDamage(attacker)) - target.getArmorClass();
         if (damage < 0) damage = 0;
-        if (attacker.getInventoryManager().getEquipment(Equipment.Slots.WEAPON) != null) {
-            damage += attacker.getInventoryManager().getWeaponDamage();
+        if (attacker.getEquipment(Equipment.Slots.WEAPON) != null) {
+            damage += attacker.getWeaponDamage();
         }
         return damage;
     }

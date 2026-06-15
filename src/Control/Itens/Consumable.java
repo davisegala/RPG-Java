@@ -10,7 +10,7 @@ public abstract class Consumable extends Item{
     @Override
     public void use(Entity target) {
         applyEffect(target);
-        target.getInventoryManager().removeItem(this);
+        target.removeItem(this);
     }
 
     protected abstract void applyEffect(Entity target);

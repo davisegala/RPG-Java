@@ -79,7 +79,7 @@ public class CombatScreen extends javax.swing.JFrame {
     
     public void printInventory() {
         jComboBox1.removeAllItems();
-        for (Item item : player.getInventoryManager().getInventory().keySet()) {
+        for (Item item : player.getInventory().keySet()) {
             if (item == null) continue;
             jComboBox1.addItem(
                 item.getName() + " | " + item.display()
@@ -452,7 +452,7 @@ public class CombatScreen extends javax.swing.JFrame {
     private void jButtonUseItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUseItemActionPerformed
         try {
             if (isPlayerTurn) {
-                player.getInventoryManager().getItem(jComboBox1.getSelectedIndex()).use(player);
+                player.getItem(jComboBox1.getSelectedIndex()).use(player);
                 refreshInfo();
                 isPlayerTurn = false;
                 enemyTurn();

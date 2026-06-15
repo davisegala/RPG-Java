@@ -1,5 +1,5 @@
 import Control.Entity.Combat.Skill;
-import Control.Entity.Class;
+import Control.Entity.Stats.Classe;
 import Control.Itens.TypeItens.Armor;
 import Control.Entity.Entity;
 import Control.Entity.Stats.StatType;
@@ -16,7 +16,7 @@ public class teste {
         Skill bite = new Skill("Bite", 4, StatType.STRENGTH);
         
         // Class
-        Class paladin = new Class("Paladin");
+        Classe paladin = new Classe("Paladin");
         paladin.setStat(StatType.STRENGTH, 1);
         paladin.setStat(StatType.RESISTANCE, 1);
         
@@ -33,7 +33,7 @@ public class teste {
         Item healingPotion = new Potion("Healing potion", 20);
         Item leatherArmor = new Armor("Leather armor", 2, Slots.CHESTPLATE);
         Item plateArmor = new Armor("Plate armor", 10, Slots.CHESTPLATE);
-        
+
         // Others
     }
 }

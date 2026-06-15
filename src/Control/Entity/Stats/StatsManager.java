@@ -2,45 +2,53 @@ package Control.Entity.Stats;
 
 import Control.Entity.Entity;
 
-public class StatsManager {
-    private Stats stats = new Stats();
-    private Level level = new Level();
-    private Entity entity;
-
-    public StatsManager(Entity entity) {
-        this.entity = entity;
-    }
+public interface StatsManager {
+    Stats stats = new Stats();
+    Level level = new Level();
+    Entity entity = null;
+    Classe classe = null;
     
     private void baseStatsLevelCalc() {
         for (StatType type : StatType.values()) {
             stats.setBaseStat(type, level.getLevel());
         }
     }
-    
-    public void addBonusStat(StatType type, int amount) {
+
+    default Classe getClasse() {
+        return classe;
+    }
+
+    /*
+
+    default void setClasse(Classe classe) {
+        this.classe = classe;
+    }
+     */
+
+    default void addBonusStat(StatType type, int amount) {
         stats.addBonusStat(type, amount);
     }
-    
-    public void addBaseStat(StatType type, int amount) {
+
+    default void addBaseStat(StatType type, int amount) {
         stats.addBaseStat(type, amount);
     }
-    
-    public void addXp(int amount) {
+
+    default void addXp(int amount) {
         level.addXp(amount, entity);
         baseStatsLevelCalc();
     }
-    
-    public void setLevel(int amount) {
+
+    default void setLevel(int amount) {
         level.setLevel(amount, entity);
         baseStatsLevelCalc();
         entity.getCombatManager().updateHp();
     }
-    
-    public int getStat(StatType type) {
+
+    default int getStat(StatType type) {
         return stats.getStat(type);
     }
-    
-    public int getLevel() {
+
+    default int getLevel() {
         return level.getLevel();
     }
 }

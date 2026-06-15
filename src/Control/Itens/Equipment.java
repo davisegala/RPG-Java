@@ -22,6 +22,6 @@ public class Equipment extends Item{
     
     @Override
     public void use(Entity target) {
-        target.getInventoryManager().equip(this);
+        target.equip(this);
     }
 }
