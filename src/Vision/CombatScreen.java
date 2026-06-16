@@ -23,7 +23,7 @@ public class CombatScreen extends javax.swing.JFrame {
         jPanelAttack.setVisible(false);
         jPanelInventory.setVisible(false);
         int x = 0;
-        for (Skill skill : player.getCombatManager().getSkills()) {
+        for (Skill skill : player.getSkills()) {
             this.JButtonSkills[x].setText(skill.getName());
             x++;
         }
@@ -33,10 +33,10 @@ public class CombatScreen extends javax.swing.JFrame {
     
     public void refreshInfo() {
         jLabelPlayerHp.setText(
-            String.valueOf(player.getCombatManager().getHp()) + "/" + String.valueOf(player.getCombatManager().getMaxHp())
+            String.valueOf(player.getHp()) + "/" + String.valueOf(player.getMaxHp())
         );
         jLabelEnemyHp.setText(String.valueOf(
-            enemy.getCombatManager().getHp()) + "/" + String.valueOf(enemy.getCombatManager().getMaxHp())
+            enemy.getHp()) + "/" + String.valueOf(enemy.getMaxHp())
         );
         printInventory();
     }
@@ -52,7 +52,7 @@ public class CombatScreen extends javax.swing.JFrame {
         combat.useSkill(enemy, combat.randomSkill(enemy), player);
         refreshInfo();
 
-        if (player.getCombatManager().getHp() <= 0) combat.end(player, enemy);
+        if (player.getHp() <= 0) combat.end(player, enemy);
         
         isPlayerTurn = true;
     }
@@ -62,12 +62,12 @@ public class CombatScreen extends javax.swing.JFrame {
             if (isPlayerTurn) {
                 isPlayerTurn = false;
                 
-                Skill skill = player.getCombatManager().getSkills()[index];
+                Skill skill = player.getSkills()[index];
 
                 combat.useSkill(player, skill, enemy);
                 refreshInfo();
 
-                if (enemy.getCombatManager().getHp() <= 0) {
+                if (enemy.getHp() <= 0) {
                     combat.end(player, enemy);
                     return;
                 }

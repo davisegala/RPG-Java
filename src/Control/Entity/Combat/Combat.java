@@ -1,7 +1,7 @@
 package Control.Entity.Combat;
 
 import Control.Entity.Entity;
-import Control.Entity.Player;
+import Vision.Game2D.Player;
 import Control.Entity.Stats.StatType;
 import Control.Itens.Equipment;
 import java.util.Random;
@@ -18,20 +18,20 @@ public class Combat {
     }
     
     public Skill randomSkill(Entity entity){
-        int index = random.nextInt(entity.getCombatManager().getSkills().length);
-        return entity.getCombatManager().getSkills()[index];
+        int index = random.nextInt(entity.getSkills().length);
+        return entity.getSkills()[index];
     }
     
     public void useSkill(Entity attacker, Skill skill, Entity target){
         int damage = getDamage(attacker, skill, target);
-        target.getCombatManager().setHp(target.getCombatManager().getHp() - damage);
+        target.setHp(target.getHp() - damage);
         System.out.println(attacker.getName()+" used "+skill.getName()+" and dealt "+damage+" damage");
     }
     
     public int getDamage(Entity attacker, Skill skill, Entity target){
         int damage = calcDamage(attacker, skill, target);
 
-        int dodgeChance = target.getStatsManager().getStat(StatType.AGILITY);
+        int dodgeChance = target.getStat(StatType.AGILITY);
         if (dodgeChance > 50) dodgeChance = 50;
         int dodgeRoll = random.nextInt(100);
 
@@ -40,7 +40,7 @@ public class Combat {
             return 0;
         }
 
-        int critChance = attacker.getStatsManager().getStat(StatType.AGILITY);
+        int critChance = attacker.getStat(StatType.AGILITY);
         if (critChance > 50) critChance = 50;
         int critRoll = random.nextInt(100);
         
@@ -62,7 +62,7 @@ public class Combat {
     }
     
     public boolean canRun(Entity entity, Entity attacker){
-        return random.nextInt(entity.getStatsManager().getStat(StatType.AGILITY)) > random.nextInt(attacker.getStatsManager().getStat(StatType.AGILITY));
+        return random.nextInt(entity.getStat(StatType.AGILITY)) > random.nextInt(attacker.getStat(StatType.AGILITY));
     }
     
     public void run(Entity entity, Entity enemy) {
@@ -70,13 +70,13 @@ public class Combat {
     }
     
     private void reward(Entity winner, Entity loser){
-        int xp = loser.getStatsManager().getLevel() * 100;
-        winner.getStatsManager().addXp(xp);
+        int xp = loser.getLevel() * 100;
+        winner.addXp(xp);
     }
     
     public void end(Entity entity1, Entity entity2) {
-        int hp1 = entity1.getCombatManager().getHp();
-        int hp2 = entity2.getCombatManager().getHp();
+        int hp1 = entity1.getHp();
+        int hp2 = entity2.getHp();
         
         if (hp1 > 0 && hp2 <= 0) {
             isPlayerDie(entity2);

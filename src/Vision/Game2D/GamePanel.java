@@ -1,6 +1,5 @@
 package Vision.Game2D;
 
-import Control.Entity.Player;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

@@ -15,7 +15,7 @@ public class Skill {
     }
     
     public int getDamage(Entity entity) {
-        return this.baseDamage * entity.getStatsManager().getStat(this.type);
+        return this.baseDamage * entity.getStat(this.type);
     }
 
     public String getName() {

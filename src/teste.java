@@ -22,12 +22,12 @@ public class teste {
         
         // Entities        
         Entity goblin = new Entity("Goblin");
-        goblin.getStatsManager().setLevel(1);
-        goblin.getCombatManager().setSkills(new Skill[] {lunge, manaBall});
+        goblin.setLevel(1);
+        goblin.setSkills(new Skill[] {lunge, manaBall});
         
         Entity wolf = new Entity("Wolf");
-        wolf.getStatsManager().setLevel(3);
-        wolf.getCombatManager().setSkills(new Skill[] {bite});
+        wolf.setLevel(3);
+        wolf.setSkills(new Skill[] {bite});
         
         // Itens
         Item healingPotion = new Potion("Healing potion", 20);

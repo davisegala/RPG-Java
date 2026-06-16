@@ -4,44 +4,24 @@ import Control.Entity.Entity;
 import Control.Entity.Stats.StatType;
 import Vision.CombatScreen;
 
-public class CombatManager {
-    private final Entity entity;
-    private int hp;
-    private Skill[] skills;
-    private final CombatScreen combatScreen = new CombatScreen();
+public interface CombatManager {
+    CombatScreen combatScreen = new CombatScreen();
 
-    public CombatManager(Entity entity) {
-        this.entity = entity;
-    }
-    
-    public void startCombat(Entity target) {
-        combatScreen.startBattle(entity, target);
-    }
-    
-    public Skill[] getSkills() {
-        return skills;
+    default void startCombat(Entity attacker, Entity target) {
+        combatScreen.startBattle(attacker, target);
     }
 
-    public void setSkills(Skill[] skills) {
-        if (skills.length > 4) return;
-        this.skills = skills;
-    }
-    
-    public int getMaxHp() {
-        return 30 + ( entity.getStatsManager().getStat(StatType.RESISTANCE) * 20 );
+    default int getMaxHp(Entity entity) {
+        return 30 + ( entity.getStat(StatType.RESISTANCE) * 20 );
     }
 
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
+    default void setHp(Entity entity, int hp) {
         if (hp < 0) hp = 0;
-        if (hp > getMaxHp()) hp = getMaxHp();
-        this.hp = hp;
+        if (hp > getMaxHp(entity)) hp = getMaxHp(entity);
+        entity.setHp(hp);
     }
-    
-    public void updateHp() {
-        this.hp = getMaxHp();
+
+    default void updateHp(Entity entity) {
+        entity.setHp(getMaxHp(entity));
     }
 }

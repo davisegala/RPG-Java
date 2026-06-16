@@ -6,10 +6,9 @@ public class Level{
     private int xp;
     private int level;
     
-    public void addXp(int amount, Entity entity){
+    public void addXp(int amount){
         this.xp += amount;
         while (this.xp >= getNecessaryXp()) levelUp();
-        System.out.println(entity.getName() + " | xp: [" + xp + "/" + getNecessaryXp() + "]");
     } 
     
     private void levelUp() {
@@ -29,7 +28,7 @@ public class Level{
         return level;
     }
 
-    public void setLevel(int quantity, Entity entity){
+    public void setLevel(int quantity){
         if (quantity < 1) return;
         for (int i = 0; i < quantity; i++) levelUp();
         xp = 0;
