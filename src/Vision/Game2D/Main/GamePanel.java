@@ -1,4 +1,7 @@
-package Vision.Game2D;
+package Vision.Game2D.Main;
+
+import Control.Entity.Player;
+import Vision.Game2D.Tile.TileManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,6 +28,8 @@ public class GamePanel extends JPanel implements Runnable{
     
     // FPS
     int FPS = 60;
+
+    TileManager tileM = new TileManager(this);
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -91,6 +96,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        tileM.draw(g2);
         player.draw(g2);
         g2.dispose();
     }

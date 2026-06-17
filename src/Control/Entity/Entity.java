@@ -12,6 +12,7 @@ public class Entity implements InventoryManager, StatsManager {
     protected int hp;
 
     // Var for 2D game
+
     protected int x, y;
     protected int speed;
 

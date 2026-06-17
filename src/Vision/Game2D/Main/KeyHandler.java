@@ -1,4 +1,4 @@
-package Vision.Game2D;
+package Vision.Game2D.Main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

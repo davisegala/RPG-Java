@@ -1,6 +1,7 @@
-package Vision.Game2D;
+package Control.Entity;
 
-import Control.Entity.Entity;
+import Vision.Game2D.Main.GamePanel;
+import Vision.Game2D.Main.KeyHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
@@ -18,7 +19,7 @@ public final class Player extends Entity {
         x = 100;
         y = 100;
         speed = 4;
-        action = Actions.IDLE;
+        action = Actions.DOWN;
     }
 
     public Player(GamePanel gp, KeyHandler keyH, String name) {
