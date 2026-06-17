@@ -28,7 +28,7 @@ public interface StatsManager {
     default void setLevel(int amount, Entity entity) {
         level.setLevel(amount);
         baseStatsLevelCalc();
-        entity.updateHp(entity);
+        entity.updateHp();
     }
 
     default int getStat(StatType type) {

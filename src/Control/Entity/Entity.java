@@ -1,30 +1,42 @@
 package Control.Entity;
-
-import Control.Entity.Combat.CombatManager;
-import Control.Entity.Combat.Skill;
 import Control.Entity.Inventory.InventoryManager;
 import Control.Entity.Stats.Classe;
+import Control.Entity.Stats.StatType;
 import Control.Entity.Stats.StatsManager;
 
-public class Entity implements InventoryManager, StatsManager, CombatManager{
+import java.awt.image.BufferedImage;
+
+public class Entity implements InventoryManager, StatsManager {
     private final String name;
     protected Classe classe;
     protected int hp;
-    protected Skill[] skills;
+
+    // Var for 2D game
     protected int x, y;
     protected int speed;
 
+    protected BufferedImage idle1, up1, up2, down1, down2, left1, left2, right1, right2;
+
+    public enum Actions { IDLE, UP, DOWN, LEFT, RIGHT }
+    protected Actions action = Actions.IDLE;
+
+    protected int spriteCounter = 0;
+    protected int spriteNum = 1;
+
+    // Constructor
+
+    public Entity(String name){
+        this.name = name;
+    }
+
+    // Methods
+
+    public void updateHp() {
+        setHp(getMaxHp());
+    }
+
     public int getMaxHp() {
-        return getMaxHp(this);
-    }
-
-    public void setSkills(Skill[] skills) {
-        if (skills.length > 4) return;
-        this.skills = skills;
-    }
-
-    public Skill[] getSkills() {
-        return this.skills;
+        return 30 + ( getStat(StatType.RESISTANCE) * 20 );
     }
 
     public int getHp() {
@@ -33,7 +45,7 @@ public class Entity implements InventoryManager, StatsManager, CombatManager{
 
     public void setHp(int hp) {
         if (hp < 0) hp = 0;
-        if (hp > getMaxHp(this)) hp = getMaxHp(this);
+        if (hp > getMaxHp()) hp = getMaxHp();
         this.hp = hp;
     }
 
@@ -47,10 +59,6 @@ public class Entity implements InventoryManager, StatsManager, CombatManager{
 
     public void setClasse(Classe classe) {
         this.classe = classe;
-    }
-
-    public Entity(String name){
-        this.name = name;
     }
 
     public String getName() {

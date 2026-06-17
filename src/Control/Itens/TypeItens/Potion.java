@@ -23,7 +23,7 @@ public class Potion extends Consumable {
     @Override
     protected void applyEffect(Entity target) {
         target.setHp(
-            Math.min(target.getHp() + healAmount, target.getMaxHp(target))
+            Math.min(target.getHp() + healAmount, target.getMaxHp())
         );
     }
 }

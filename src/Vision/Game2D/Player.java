@@ -11,77 +11,92 @@ import java.io.IOException;
 public final class Player extends Entity {
     private final GamePanel gp;
     private final KeyHandler keyH;
-    public enum Actions { IDLE, UP, DOWN, LEFT, RIGHT }
-    private Actions action = Actions.IDLE;
-    private BufferedImage idle1, idle2, up1, up2, down1, down2, left1, left2, right1, right2;
-    
-    private final String path = "src/Model/Player_Sprites/";
 
-    public Player(GamePanel gp, KeyHandler keyH, String name) {
-        super(name);
-        this.gp = gp;
-        this.keyH = keyH;
-        setDefaultValues();
-        getPlayerImage();
-    }
+    private final String spritePath = "src/Model/Player_Sprites/";
 
-    private BufferedImage getImage(String fileName) {
-        try {
-            File arquivo = new File(path + fileName);
-            return ImageIO.read(arquivo);
-        } catch (IOException e) {
-            System.err.println("Não foi possível encontrar o arquivo em: " + path + fileName);
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void getPlayerImage() {
-        idle1 = getImage("player_idle_1.png");
-        idle2 = getImage("player_idle_2.png");
-        right1 = getImage("player_right_1.png");
-        right2 = getImage("player_right_2.png");
-        left1 = getImage("player_left_1.png");
-        left2 = getImage("player_left_2.png");
-    }
-    
     public void setDefaultValues() {
         x = 100;
         y = 100;
         speed = 4;
         action = Actions.IDLE;
     }
+
+    public Player(GamePanel gp, KeyHandler keyH, String name) {
+        super(name);
+        this.gp = gp;
+        this.keyH = keyH;
+        setDefaultValues();
+        getImage();
+    }
+
+    public void getImage() {
+        up1 = getSprite("player_up_1.png");
+        up2 = getSprite("player_up_2.png");
+        down1 = getSprite("player_down_1.png");
+        down2 = getSprite("player_down_2.png");
+        right1 = getSprite("player_right_1.png");
+        right2 = getSprite("player_right_2.png");
+        left1 = getSprite("player_left_1.png");
+        left2 = getSprite("player_left_2.png");
+    }
+
+    public BufferedImage getSprite(String fileName) {
+        try {
+            File file = new File(spritePath + fileName);
+            return ImageIO.read(file);
+        } catch (IOException e) {
+            System.err.println("File not found: " + spritePath + fileName);
+            throw new RuntimeException(e);
+        }
+    }
     
     public void update() {
-        if (keyH.upPressed) {
-            action = Actions.UP;
-            y -= speed;
-        }
-        if (keyH.downPressed) {
-            action = Actions.DOWN;
-            y += speed;
-        }
-        if (keyH.leftPressed) {
-            action = Actions.LEFT;
-            x -= speed;
-        }
-        if (keyH.rightPressed) {
-            action = Actions.RIGHT;
-            x += speed;
-        }
-        if (!keyH.upPressed && !keyH.downPressed && !keyH.leftPressed && !keyH.rightPressed) {
-            action = Actions.IDLE;
+        if (keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed) {
+            if (keyH.upPressed) {
+                action = Actions.UP;
+                y -= speed;
+            }
+            if (keyH.downPressed) {
+                action = Actions.DOWN;
+                y += speed;
+            }
+            if (keyH.leftPressed) {
+                action = Actions.LEFT;
+                x -= speed;
+            }
+            if (keyH.rightPressed) {
+                action = Actions.RIGHT;
+                x += speed;
+            }
+
+            spriteCounter++;
+            if (spriteCounter > 10) {
+                if (spriteNum == 1) spriteNum = 2;
+                else if (spriteNum == 2) spriteNum = 1;
+                spriteCounter = 0;
+            }
         }
     }
     
     public void draw(Graphics2D g) {
         BufferedImage image = null;
-
         switch (action){
-            case IDLE -> image = idle1;
-            case UP -> image = up1;
-            case DOWN -> image = down1;
-            case LEFT -> image = left1;
-            case RIGHT -> image = right1;
+            case UP -> {
+                if (spriteNum == 1) image = up1;
+                if (spriteNum == 2) image = up2;
+            }
+            case DOWN -> {
+                if (spriteNum == 1) image = down1;
+                if (spriteNum == 2) image = down2;
+            }
+            case LEFT -> {
+                if (spriteNum == 1) image = left1;
+                if (spriteNum == 2) image = left2;
+            }
+            case RIGHT -> {
+                if (spriteNum == 1) image = right1;
+                if (spriteNum == 2) image = right2;
+            }
         }
 
         g.drawImage(image, x, y, gp.getTileSize()*2, gp.getTileSize()*2, null);
